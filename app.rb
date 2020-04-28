@@ -1,5 +1,4 @@
 require 'sinatra'
-require 'shotgun'
 #set :session_secret, "secret_session"
 
 get '/' do
@@ -10,17 +9,21 @@ get '/secret' do
   "Hello again"
 end
 
-get '/secret/yo' do
+get '/yo' do
   "and again"
 end
 
 get '/random-cat' do
- @name = ["Lizzie", "Tom", "Jack"].sample
+ @name = ["Hibo", "Tom", "Jack"].sample
  erb(:index)
 end
 
-get '/named-cat' do
- p params
- p @name = params[:name]
+get '/form' do
+  erb(:form)
+end
+
+post '/named-cat' do
+  p params
+  @name = params[:name]
  erb(:index)
 end
